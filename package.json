@@ -21,7 +21,8 @@
     "build:node": "cross-env NODE_ENV=node rollup --config && gzip-size index.mjs && gzip-size index.cjs",
     "build:browser": "cross-env NODE_ENV=browser,min rollup --config && gzip-size animated-sprite.min.js",
     "prepublishOnly": "npm run test && npm run build",
-    "test": "eslint index.mjs --config eslint.config.js --cache"
+    "test": "eslint index.mjs --config eslint.config.js --cache",
+    "demo": "browser-sync start --server 'docs' --files 'docs'"
   },
   "keywords": [
     "sprite",
