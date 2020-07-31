@@ -1,6 +1,5 @@
 export default class AnimatedSprite {
   constructor(target, image, width, height, frameCount, options){
-    // last 4 args ...canvasW,canvasH,offsetX,offsetY) are for multiple animations on the same canvas
     const RAD = Math.PI / 180;
     const RAD90 = RAD * 90;
     const self = this;
@@ -62,19 +61,16 @@ export default class AnimatedSprite {
     const eventFPSChange = new Event('fpschange');
     let history = [];
     if(record) history.length = frames + 1;
-    // canvas.width = canvasW || w;
-    // canvas.height = canvasH || h;
     let i = 0;
     let j = 0;
     while(i < frames){
       points.push({x: w * col, y: h * row});
-      // console.log('x:'+points[i].x+',y:'+points[i].y);
       (col < cols) ? col++ : col = 0;
-      j++; // don't delete
+      j++;
       row = Math.floor(j / (cols + 1));
       i++;
     }
-    col = row = 0; // temporary
+    col = row = 0;
     function startUpdate(){
       if(!updating){
         updating = true;
@@ -90,17 +86,14 @@ export default class AnimatedSprite {
       canvas.dispatchEvent(eventPaused);
     }
     let alpha;
-    // let opacity;
     function update($timestamp){
       if(timestamp !== $timestamp){
-        timestamp = $timestamp; // HACK: never figured out why this was doubling up. This bug indicates larger problems
+        timestamp = $timestamp; // HACK: prevents doubling
         remainder = tick % every;
         if(remainder === 0){
           advance();
           render(frame);
           alpha = 1;
-          // opacity = 1;
-          // window.console.log(`step: ${remainder}, alpha: ${alpha}, opacity: ${opacity}`);
         } else if(crossfade){
           if(transparency){
             const angle = remainder / every * RAD90;
@@ -109,14 +102,10 @@ export default class AnimatedSprite {
           } else {
             if (remainder === 1){
               alpha = 1 / every;
-              // opacity = alpha;
             } else {
-              alpha = (1 / every) * 2; // so close, but not exact
-              // opacity = opacity / (1 + alpha) + alpha;
+              alpha = (1 / every) * 2;
             }
-            // window.console.log(`step: ${remainder}, alpha: ${alpha}, opacity: ${opacity}`);
             render(nextframe, alpha);
-            // (opacity === 0) ? opacity = alpha : opacity *= 1 + Math.sin(alpha); // sin 10 steps = 2.51, 50 steps = 1107501.45
           }
         }
         tick++;
@@ -126,12 +115,10 @@ export default class AnimatedSprite {
       }
     }
     function render($frame, $alpha, $clear){
-      // console.log(row+' '+col+' '+$frame);
       if(points[$frame]){
         ctx.globalAlpha = $alpha || 1;
-        if($clear) ctx.clearRect(ox, oy, w, h); // clear the canvas before repaint
+        if($clear) ctx.clearRect(ox, oy, w, h);
         if(history[$frame]){
-          // if(reverse) ctx.clearRect(ox, oy, w, h);
           ctx.drawImage(history[$frame], 0, 0, w, h, ox, oy, w, h);
         } else {
           ctx.drawImage(img, points[$frame].x, points[$frame].y, w, h, ox, oy, w, h);
@@ -150,12 +137,10 @@ export default class AnimatedSprite {
         if(self.onComplete){
           self.onComplete();
         }
-        // reverse = true;
       } else if(frame < 1 && reverse){
         stop();
         ended = true;
         canvas.dispatchEvent(eventEnded);
-        // reverse = false;
       } else {
         if(reverse){
           frame--;
@@ -173,11 +158,15 @@ export default class AnimatedSprite {
     };
     this.getTransparency = () => transparency;
     this.setTransparency = bool => {
-      if(!bool){ canvas.style.opacity = 1; }
-      transparency = bool;
+      if(bool && record) {
+        window.console.error('transparency cannot be set to true in combination with dontClear');
+      } else {
+        if(!bool){ canvas.style.opacity = 1; }
+        transparency = bool;
+      }
     };
     this.initCrossfade = () => {
-      crossfade = true; // in case this is invoked directly
+      crossfade = true;
     };
     this.getPlaying = () => playing;
     this.getEvery = () => every;
@@ -228,7 +217,7 @@ export default class AnimatedSprite {
       const parent = canvas.parentNode;
       if(!targIsCanvas) parent.removeChild(canvas);
     };
-    render(frame); // show the first frame
+    render(frame);
   }
   get every(){
     return this.getEvery();

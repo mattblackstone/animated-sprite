@@ -113,6 +113,9 @@ var Demo = {
       var frameH = parseInt(path.substring(path.lastIndexOf('h') + 1, path.lastIndexOf('f')), 10);
       var frameCount = parseInt(path.substring(path.lastIndexOf('f') + 1, path.lastIndexOf('.')), 10);
       var noClear = path.indexOf('dontclear') > -1;
+      var ext = img.src.split('.').pop();
+      if(noClear || /jpeg|jpg/.test(ext)) toggle_alpha.setAttribute('disabled', '');
+      else toggle_alpha.removeAttribute('disabled');
 
       if (as.instance) {
         // garbage collect

@@ -1,9 +1,9 @@
 {
   "name": "animated-sprite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight utility for animating sprite-sheets",
   "repository": "mattblackstone/animated-sprite",
-  "homepage": "https://github.com/mattblackstone/animated-sprite#readme",
+  "homepage": "https://mattblackstone.github.io/animated-sprite/",
   "bugs": "https://github.com/mattblackstone/animated-sprite/issues",
   "main": "./index.cjs",
   "exports": {
@@ -22,7 +22,7 @@
     "build:browser": "cross-env NODE_ENV=browser,min rollup --config && gzip-size animated-sprite.min.js",
     "prepublishOnly": "npm run test && npm run build",
     "test": "eslint index.mjs --config eslint.config.js --cache",
-    "demo": "browser-sync start --server 'docs' --files 'docs'"
+    "demo": "browser-sync start --server '.' --files '.' --directory"
   },
   "keywords": [
     "sprite",
