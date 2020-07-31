@@ -1,5 +1,5 @@
 # Lightweight utility for animating sprite-sheets
-Intended for use in display ads and other very low file size applications where video can't be used. Play, pause, reverse and change playback speed dynamically. A key feature is frame blending for smoother playback of low framerate sequences. Works with simple spritesheets made up of image sequences (no JSON data).
+Intended for use in display ads and other very low file size applications where video can't be used. Play, pause, reverse and change playback speed dynamically. A key feature is frame blending for smoother playback of low frame-rate sequences. Works with simple sprite-sheets made up of image sequences (no JSON data).
 
 ## Compatibility
 This library is compatible with all modern browsers and IE10+
@@ -28,7 +28,7 @@ const AnimatedSprite = require('animated-sprite');
 ```
 
 ### Implementation
-After embedding/importing the script, create a new instance of AnimatedSprite passing the required arguments to the constructor. The shape of the spritesheet can be a single row, single column or rectangular (multiple rows/columns), but cannot not contain padding between frames. Each animation frame in the spritesheet must be the same size.
+After embedding/importing the script, create a new instance of AnimatedSprite passing the required arguments to the constructor. The shape of the sprite-sheet can be a single row, single column or rectangular (multiple rows/columns), but cannot not contain padding between frames. Each animation frame in the sprite-sheet must be the same size.
 ```typescript
 class AnimatedSprite(target: Element, image: HTMLImageElement, width: number, height: number, frameCount: number, options?: Object {
   dontClear: boolean, canvasW: number, canvasH: number, offsetX: number, offsetY: number

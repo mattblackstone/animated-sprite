@@ -134,6 +134,7 @@ var Demo = {
 
       onFPSChange();
       addASListeners();
+      onPlayPause();
 
       var opts = noClear ? ', {\n    dontClear: ' + noClear + '\n  }' : '';
       var codeSample = 'var animation = document.querySelector(\'#animation\');\nvar img = new Image();\nvar myAnimation;\nimg.onload = function () {\n  myAnimation = new AnimatedSprite(animation, img, ' + frameW + ', ' + frameH + ', ' + frameCount + opts + ');\n};\nimg.src = ' + path + ';';
