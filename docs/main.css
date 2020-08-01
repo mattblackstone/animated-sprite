@@ -84,12 +84,18 @@ a img,
   grid-column: 1 / -1;
 }
 
+#animation_container {
+  grid-column: 1 / -1;
+  background-color: #808080;
+  background-image: url('images/tile-checker-light.png');
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #animation {
   position: relative;
-  grid-column: 1 / -1;
-  justify-self: center;
-  align-self: center;
-  max-width: 100vw;
 }
 
 #animation canvas {
