@@ -17,6 +17,9 @@ var Demo = {
     var img;
     var url = window.location.href;
     var as = {};
+    var alphaDisabled;
+    var instance;
+    var every = 1;
 
     function showPlay() {
       btn_play_pause.innerHTML = 'play';
@@ -47,15 +50,23 @@ var Demo = {
     }
 
     function onFPSChange() {
-      as.instance.every = parseInt(fps.value, 10);
+      var newVal = parseInt(fps.value, 10);
+      every = newVal;
+      as.instance.every = every;
+      onCrossfade();
     }
 
     function onCrossfade() {
       as.instance.crossfade = toggle_crossfade.checked;
+      if (every > 1) toggle_crossfade.removeAttribute('disabled');
+      else toggle_crossfade.setAttribute('disabled', '');
+      onTransparency();
     }
 
     function onTransparency() {
       as.instance.transparency = toggle_alpha.checked;
+      if (every > 1 && !alphaDisabled && as.instance.crossfade) toggle_alpha.removeAttribute('disabled');
+      else toggle_alpha.setAttribute('disabled', '');
     }
 
     function loadImage(path) {
@@ -114,8 +125,8 @@ var Demo = {
       var frameCount = parseInt(path.substring(path.lastIndexOf('f') + 1, path.lastIndexOf('.')), 10);
       var noClear = path.indexOf('dontclear') > -1;
       var ext = img.src.split('.').pop();
-      if(noClear || /jpeg|jpg/.test(ext)) toggle_alpha.setAttribute('disabled', '');
-      else toggle_alpha.removeAttribute('disabled');
+      alphaDisabled = noClear || /jpeg|jpg/.test(ext);
+      every = 1;
 
       if (as.instance) {
         // garbage collect
@@ -137,7 +148,13 @@ var Demo = {
       onPlayPause();
 
       var opts = noClear ? ', {\n    dontClear: ' + noClear + '\n  }' : '';
-      var codeSample = 'var animation = document.querySelector(\'#animation\');\nvar img = new Image();\nvar myAnimation;\nimg.onload = function () {\n  myAnimation = new AnimatedSprite(animation, img, ' + frameW + ', ' + frameH + ', ' + frameCount + opts + ');\n};\nimg.src = ' + path + ';';
+      instance = 'var animation = document.querySelector(\'#animation\');\nvar img = new Image();\nvar myAnimation;\nimg.onload = function () {\n  myAnimation = new AnimatedSprite(animation, img, ' + frameW + ', ' + frameH + ', ' + frameCount + opts + ');\n};\nimg.src = ' + path + ';';
+      writeCode('');
+    }
+    
+    function writeCode(newline) {
+      var nl = newline ? '\n' + newline : '';
+      var codeSample = instance + nl;
       var lines = codeSample.split('\n').length + 1;
       js_code.rows = lines;
       js_code.value = codeSample;

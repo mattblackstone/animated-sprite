@@ -1,0 +1,135 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1;
+}
+
+body {
+  background-color: #202428;
+  color: #eee;
+  font-family: 'Rubik', Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, p {
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #f1a;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+a img,
+:link img,
+:visited img {
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#header {
+  margin: 0;
+  width: 100%;
+  background-color: #1c2024;
+  border-bottom: 1px solid rgba(223, 239, 255, 0.08);
+}
+
+#controls {
+  max-width: 768px;
+  min-width: 320px;
+  margin: auto;
+  display: grid;
+  padding: 2rem 1rem;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+}
+
+#instructions {
+  grid-column: 1 / -1;
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+#btn_github {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media screen and (max-width: 540px) {
+  #controls {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  #btn_github {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #controls {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, auto);
+  }
+}
+
+#animation_container {
+  min-width: 320px;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#animation {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#animation canvas {
+  width: 100%;
+}
+
+#codeblock {
+  position: relative;
+  padding: 0 1rem 1rem;
+  max-width: 768px;
+  min-width: 320px;
+  margin: auto;
+}
+
+#js_code {
+  width: 100%;
+  padding: 0.75rem;
+}
+
+#btn_copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 1.75rem;
+}

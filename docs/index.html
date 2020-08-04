@@ -6,16 +6,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="layout.css">
   </head>
 
   <body>
     <div id="header">
       <div id="controls">
         <div id="instructions">
-          <h1>animated-sprite</h1>
+          <h1>Animated Sprite</h1>
           <p>Choose sprite-sheet image from the dropdown to start.</p>
-          <a id="btn_github" href="https://github.com/mattblackstone/animated-sprite">View on GitHub</a>
+          <a id="btn_github" class="btn-alt" href="https://github.com/mattblackstone/animated-sprite">View on GitHub</a>
         </div>
         <select id="img_list">
           <option>select a sprite-sheet</option>
@@ -61,7 +63,7 @@
     </div>
     <div id="codeblock">
       <textarea id="js_code" rows="2" cols="72" spellcheck="false"></textarea>
-      <button type="button" id="btn_copy">copy code</button>
+      <button type="button" class="btn-alt" id="btn_copy">copy code</button>
     </div>
     <script src="https://unpkg.com/animated-sprite/animated-sprite.min.js"></script>
     <script src="main.js"></script>
