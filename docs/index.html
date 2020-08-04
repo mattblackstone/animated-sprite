@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>animated-sprite demo</title>
+    <title>animated-sprite</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -10,55 +10,58 @@
   </head>
 
   <body>
-    <div id="content">
-      <div id="instructions">
-        <h3>animated-sprite demo</h3>
-        <p>Choose sprite sheet image from the dropdown to start.</p>
+    <div id="header">
+      <div id="controls">
+        <div id="instructions">
+          <h1>animated-sprite</h1>
+          <p>Choose sprite-sheet image from the dropdown to start.</p>
+          <a id="btn_github" href="https://github.com/mattblackstone/animated-sprite">View on GitHub</a>
+        </div>
+        <select id="img_list">
+          <option>select a sprite-sheet</option>
+          <option value="bounce-w300h300f46.png">bounce</option>
+          <option value="bounce-dontclear-w300h300f46.png">bounce (don't clear)</option>
+          <option value="butterfly-w304h171f11.jpg">butterfly</option>
+          <option value="charging-w150h110f50.png">charging</option>
+          <option value="charging-dontclear-w150h110f50.png">charging (don't clear)</option>
+          <option value="water-w300h600f40.jpg">water</option>
+          <option value="water-side-w300h180f48.jpg">water-side</option>
+          <option value="spectrum-w1600h50f32.png">spectrum</option>
+        </select>
+        <select id="fps">
+          <option value="1" selected>60fps</option>
+          <option value="2">30fps</option>
+          <option value="3">20fps</option>
+          <option value="4">15fps</option>
+          <option value="5">12fps</option>
+          <option value="6">10fps</option>
+          <option value="12">5fps</option>
+          <option value="15">4fps</option>
+          <option value="20">3fps</option>
+          <option value="30">2fps</option>
+          <option value="60">1fps</option>
+        </select>
+        <button type="button" id="btn_play_pause">play</button>
+        <div class="toggle">
+          <input type="checkbox" id="toggle_reverse" class="checkbox">
+          <label for="toggle_reverse" class="switch">backward</label>
+        </div>
+        <div class="toggle">
+          <input type="checkbox" id="toggle_crossfade" class="checkbox">
+          <label for="toggle_crossfade" class="switch">crossfade</label>
+        </div>
+        <div class="toggle">
+          <input type="checkbox" id="toggle_alpha" class="checkbox">
+          <label for="toggle_alpha" class="switch">transparency</label>
+        </div>
       </div>
-      <select id="img_list">
-        <option>select a sprite-sheet</option>
-        <option value="bounce-w300h300f46.png">bounce</option>
-        <option value="bounce-dontclear-w300h300f46.png">bounce (don't clear)</option>
-        <option value="butterfly-w304h171f11.jpg">butterfly</option>
-        <option value="charging-w150h110f50.png">charging</option>
-        <option value="charging-dontclear-w150h110f50.png">charging (don't clear)</option>
-        <option value="water-w300h600f40.jpg">water</option>
-        <option value="water-side-w300h180f48.jpg">water-side</option>
-        <option value="spectrum-w800h100f32.png">spectrum</option>
-      </select>
-      <select id="fps">
-        <option value="1" selected>60fps</option>
-        <option value="2">30fps</option>
-        <option value="3">20fps</option>
-        <option value="4">15fps</option>
-        <option value="5">12fps</option>
-        <option value="6">10fps</option>
-        <option value="12">5fps</option>
-        <option value="15">4fps</option>
-        <option value="20">3fps</option>
-        <option value="30">2fps</option>
-        <option value="60">1fps</option>
-      </select>
-      <button type="button" id="btn_play_pause">play</button>
-      <div class="toggle">
-        <input type="checkbox" id="toggle_reverse" class="checkbox">
-        <label for="toggle_reverse" class="switch">backward</label>
-      </div>
-      <div class="toggle">
-        <input type="checkbox" id="toggle_crossfade" class="checkbox">
-        <label for="toggle_crossfade" class="switch">crossfade</label>
-      </div>
-      <div class="toggle">
-        <input type="checkbox" id="toggle_alpha" class="checkbox">
-        <label for="toggle_alpha" class="switch">transparency</label>
-      </div>
-      <div id="animation_container">
-        <div id="animation"></div>
-      </div>
-      <div id="codeblock">
-        <textarea id="js_code" rows="7" cols="72" spellcheck="false"></textarea>
-        <button type="button" id="btn_copy">copy code</button>
-      </div>
+    </div>
+    <div id="animation_container">
+      <div id="animation"></div>
+    </div>
+    <div id="codeblock">
+      <textarea id="js_code" rows="2" cols="72" spellcheck="false"></textarea>
+      <button type="button" id="btn_copy">copy code</button>
     </div>
     <script src="https://unpkg.com/animated-sprite/animated-sprite.min.js"></script>
     <script src="main.js"></script>

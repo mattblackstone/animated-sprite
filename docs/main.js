@@ -138,6 +138,8 @@ var Demo = {
 
       var opts = noClear ? ', {\n    dontClear: ' + noClear + '\n  }' : '';
       var codeSample = 'var animation = document.querySelector(\'#animation\');\nvar img = new Image();\nvar myAnimation;\nimg.onload = function () {\n  myAnimation = new AnimatedSprite(animation, img, ' + frameW + ', ' + frameH + ', ' + frameCount + opts + ');\n};\nimg.src = ' + path + ';';
+      var lines = codeSample.split('\n').length + 1;
+      js_code.rows = lines;
       js_code.value = codeSample;
     }
 
