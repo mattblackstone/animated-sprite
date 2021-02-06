@@ -1,8 +1,14 @@
+@import 'vars';
+
+$ui-grad: linear-gradient(135deg, $accent1, $accent2);
+
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 a:hover {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
 button,
 select,
@@ -11,37 +17,43 @@ a,
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.125rem;
-  border-radius: 0.5rem; }
+  border-radius: 0.5rem;
+}
 
 button,
 select,
 a {
   border: none;
-  color: white; }
+  color: white;
+}
 
 button,
 a {
   padding: 0.375rem 1rem;
-  background-color: #d0e;
-  background-image: linear-gradient(135deg, #e09, #d0e);
-  background-repeat: no-repeat; }
+  background-color: $accent2;
+  background-image: $ui-grad;
+  background-repeat: no-repeat;
+}
 
 button:active, a:active {
-  background: black; }
+  background: $bg1;
+}
 
 .btn-alt {
   font-size: 0.75rem;
   padding: 0.25rem 1rem;
   background: rgba(44, 50, 56, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(223, 239, 255, 0.16); }
+  box-shadow: inset 0 0 0 1px rgba(223, 239, 255, 0.16);
+}
 
 .btn-alt:active {
-  background: #d0e; }
+  background: $accent2;
+}
 
 textarea {
   font-family: Monaco, monospace;
   color: #abc;
-  background: #1c2024;
+  background: $bg2;
   box-shadow: inset 0 0 0 1px rgba(223, 239, 255, 0.08);
   padding: 16px;
   font-size: 0.75rem;
@@ -50,11 +62,13 @@ textarea {
   display: block;
   border: none;
   border-radius: 0.5rem;
-  resize: none; }
+  resize: none;
+}
 
 ::selection {
-  background-color: #d0e;
-  color: white; }
+  background-color: $accent2;
+  color: white;
+}
 
 select {
   /* https://www.filamentgroup.com/lab/select-css.html */
@@ -67,32 +81,39 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background: #d0e;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(135deg, #e09, #d0e);
+  background: $accent2;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    $ui-grad;
   background-repeat: no-repeat, repeat;
   background-position: right 1em top 50%, 0 0;
-  background-size: .65em auto, 100%; }
+  background-size: .65em auto, 100%;
+}
 
 select:focus,
 select:focus-within {
-  background-color: #1c2024; }
+  background-color: $bg2; //unset;
+}
 
 select::-ms-expand {
-  display: none; }
+  display: none;
+}
 
 select:focus,
 button:focus,
-.checkbox:focus + .switch {
+.checkbox:focus+.switch {
   box-shadow: 0 0 1px 2px rgba(59, 153, 252, 0.7);
-  outline: none; }
+  outline: none;
+}
 
 select option {
-  font-weight: normal; }
+  font-weight: normal;
+}
 
 .toggle {
   position: relative;
   padding: 0.375rem 1rem;
-  box-shadow: inset 0 0 0 1px rgba(223, 239, 255, 0.25); }
+  box-shadow: inset 0 0 0 1px rgba(223, 239, 255, 0.25);
+}
 
 .switch {
   position: absolute;
@@ -105,10 +126,12 @@ select option {
   transition: background-color 0.2s linear;
   text-indent: 50px;
   line-height: 20px;
-  white-space: nowrap; }
+  white-space: nowrap;
+}
 
-.checkbox:disabled + .switch {
-  opacity: 0.25; }
+.checkbox:disabled+.switch {
+  opacity: 0.25;
+}
 
 .switch::after {
   content: '';
@@ -119,14 +142,18 @@ select option {
   background-color: white;
   top: 1px;
   left: 1px;
-  transition: transform 0.1s ease-in-out; }
+  transition: transform 0.1s ease-in-out;
+}
 
-.checkbox:checked + .switch::after {
-  transform: translateX(20px); }
+.checkbox:checked+.switch::after {
+  transform: translateX(20px);
+}
 
-.checkbox:checked + .switch {
-  background-color: #d0e;
-  background-image: linear-gradient(135deg, #e09, #d0e); }
+.checkbox:checked+.switch {
+  background-color: $accent2;
+  background-image: $ui-grad;
+}
 
 .checkbox {
-  opacity: 0; }
+  opacity: 0;
+}

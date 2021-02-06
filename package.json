@@ -22,7 +22,8 @@
     "build:browser": "cross-env NODE_ENV=browser,min rollup --config && gzip-size animated-sprite.min.js",
     "prepublishOnly": "npm run test && npm run build",
     "test": "eslint index.mjs --config eslint.config.js --cache",
-    "demo": "browser-sync start --server '.' --files '.' --directory"
+    "demo": "browser-sync start --server '.' --files '.' --directory & npm run watch:demo",
+    "watch:demo": "node-sass -w docs_src/ -o docs/"
   },
   "keywords": [
     "sprite",
@@ -42,6 +43,7 @@
     "eslint": "^7.5.0",
     "gzip-size": "^5.1.1",
     "gzip-size-cli": "^3.0.0",
+    "node-sass": "^4.14.1",
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^6.1.0"
   }
